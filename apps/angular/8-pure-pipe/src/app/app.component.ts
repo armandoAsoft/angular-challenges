@@ -1,19 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormatDataPipe } from './core/pipes/format-data.pipe';
 
 @Component({
   selector: 'app-root',
+  imports: [FormatDataPipe],
   changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     @for (person of persons; track person) {
-      {{ heavyComputation(person, $index) }}
+      {{ person | formatData: $index }}
     }
   `,
 })
 export class AppComponent {
   persons = ['toto', 'jack'];
-
-  heavyComputation(name: string, index: number) {
-    // very heavy computation
-    return `${name} - ${index}`;
-  }
 }

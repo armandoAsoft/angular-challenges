@@ -1,12 +1,17 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  contentChild,
+} from '@angular/core';
+import { MessageDirective } from './message.directive';
 
 @Component({
   selector: 'app-card',
   imports: [],
   template: `
-    <div>{{ title() }}</div>
+    <ng-content select="[title]"></ng-content>
     @if (message()) {
-      <div>{{ message() }}</div>
+      <ng-content select="[message]" />
     } @else {
       <div>Aucun message</div>
     }
@@ -17,6 +22,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   },
 })
 export class CardComponent {
-  title = input.required<string>();
-  message = input<string | undefined>(undefined);
+  message = contentChild(MessageDirective);
 }

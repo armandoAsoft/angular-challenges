@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -18,11 +19,40 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     }
   `,
+  animations: [
+    trigger('fadeRight', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(80px)' }),
+        animate(
+          '1s ease-out',
+          style({ opacity: 1, transform: 'translateX(0)' }),
+        ),
+      ]),
+    ]),
+    trigger('fadeLeft', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(-80px)' }),
+        animate(
+          '1s ease-out',
+          style({ opacity: 1, transform: 'translateX(0)' }),
+        ),
+      ]),
+    ]),
+    trigger('fadeDown', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-80px)' }),
+        animate(
+          '1s ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' }),
+        ),
+      ]),
+    ]),
+  ],
   changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div class="mx-20 my-40 flex gap-5">
       <section>
-        <div>
+        <div @fadeRight>
           <h3>2008</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
@@ -32,7 +62,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p>
         </div>
 
-        <div>
+        <div @fadeLeft>
           <h3>2010</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
@@ -42,7 +72,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p>
         </div>
 
-        <div>
+        <div @fadeRight>
           <h4>2012</h4>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
@@ -53,7 +83,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
       </section>
 
-      <section>
+      <section @fadeDown>
         <div class="list-item">
           <span>Name:</span>
           <span>Samuel</span>
@@ -87,4 +117,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
   `,
 })
-export class AppComponent {}
+export class AppComponent {
+  // enterRightAnimation = signal('slide-fade-right');
+  // enterLeftAnimation = signal('slide-fade-left');
+}

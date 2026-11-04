@@ -42,4 +42,10 @@ export class ProfilePage {
     this.userProfile.setProfile(profile);
     this.selectedProfile.set(profile);
   }
+
+  constructor() {
+    this.userProfile.getProfile().subscribe((profile) => {
+      this.selectedProfile.set(profile);
+    });
+  }
 }

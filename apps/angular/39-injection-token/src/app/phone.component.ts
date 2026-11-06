@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DEFAULT_TIMER } from './data';
 import { TimerContainerComponent } from './timer-container.component';
 
 @Component({
@@ -12,5 +13,11 @@ import { TimerContainerComponent } from './timer-container.component';
     </div>
     <timer-container />
   `,
+  providers: [
+    {
+      provide: DEFAULT_TIMER,
+      useValue: 2000,
+    },
+  ],
 })
 export default class PhoneComponent {}

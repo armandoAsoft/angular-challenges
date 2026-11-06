@@ -1,0 +1,18 @@
+text {
+  font-size: 10px;
+  color: black;
+}
+
+:host(.error) {
+  text {
+    color: red;
+    font-size: 30px;
+  }
+}
+
+:host(.warning) {
+  text {
+    color: orange;
+    font-size: 25px;
+  }
+}

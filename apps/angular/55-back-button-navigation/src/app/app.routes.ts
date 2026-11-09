@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SensitiveActionComponent } from './sensitive-action/sensitive-action.component';
 import { SimpleActionComponent } from './simple-action/simple-action.component';
+import { canLeaveGuard } from './guards/can-leave.guard';
 
 export const APP_ROUTES: Routes = [
   {
@@ -16,9 +17,11 @@ export const APP_ROUTES: Routes = [
   {
     path: 'simple-action',
     component: SimpleActionComponent,
+    canDeactivate: [canLeaveGuard]
   },
   {
     path: 'sensitive-action',
     component: SensitiveActionComponent,
+    canDeactivate: [canLeaveGuard]
   },
 ];

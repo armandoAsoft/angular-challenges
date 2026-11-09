@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
-  MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { BaseDialogComponent } from '../base-dialog/base-dialog';
 
 @Component({
   selector: 'app-dialog-dialog',
@@ -20,6 +20,8 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DialogComponent {
-  readonly dialogRef = inject(MatDialogRef<DialogComponent>);
+export class DialogComponent extends BaseDialogComponent {
+  constructor() {
+    super();
+  }
 }
